@@ -267,3 +267,23 @@ section { padding: 120px 5%; position: relative; }
     pointer-events: none; /* Allows clicks to pass through to buttons/links */
     background: transparent;
 }
+
+/* Infinite Luxury Marquee */
+.marquee-container {
+    width: 100%; overflow: hidden; white-space: nowrap;
+    padding: 30px 0; border-top: 1px solid rgba(198,160,82,0.2); 
+    border-bottom: 1px solid rgba(198,160,82,0.2);
+    background: #050505; display: flex; align-items: center;
+}
+.marquee-content {
+    display: inline-block;
+    animation: marqueeScroll 20s linear infinite;
+}
+.marquee-content span {
+    font-family: var(--font-heading); font-size: 2.5rem; color: var(--gold);
+    margin: 0 40px; letter-spacing: 4px;
+}
+@keyframes marqueeScroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); } /* Scrolls exactly half to loop smoothly */
+}
