@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Concierge | SAMRUDHI DIAM</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <h2 style="font-size: 1.5rem;">SAMRUDHI</h2>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">Maison</a>
+            <a href="products.html">Collections</a>
+            <a href="contact.html">Concierge</a>
+        </div>
+    </nav>
+
+    <section style="min-height: 100vh; display: flex; align-items: center; justify-content: center; background: url('https://images.unsplash.com/photo-1584346133934-a3afd2a33c4c?q=80&w=1500&auto=format&fit=crop') center/cover; position: relative;">
+        <div style="position: absolute; inset: 0; background: rgba(15,15,15,0.85); z-index: 1;"></div>
+        
+        <div class="glass-card reveal" style="position: relative; z-index: 2; width: 100%; max-width: 600px; padding: 60px;">
+            <h2 style="font-size: 2.5rem; text-align: center; margin-bottom: 10px;">Private Concierge</h2>
+            <p style="text-align: center; color: #aaa; margin-bottom: 40px; font-size: 0.9rem;">Submit your wholesale inquiry.</p>
+            
+            <form>
+                <div class="form-group">
+                    <input type="text" class="form-input" required>
+                    <label class="form-label">Full Name / Company</label>
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-input" required>
+                    <label class="form-label">Business Email</label>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-input" required>
+                    <label class="form-label">Inquiry Details (e.g., Loose Stones, Bridal)</label>
+                </div>
+                <button type="submit" class="btn-magnetic" style="width: 100%; margin-top: 20px;">Request Consultation</button>
+            </form>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
