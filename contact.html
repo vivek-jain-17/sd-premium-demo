@@ -6,7 +6,9 @@
     <title>Concierge | SAMRUDHI DIAM</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="ambient-bg">
+    <div class="light-orb" style="width: 600px; height: 600px; top: 20%; left: 30%;"></div>
+
     <nav>
         <h2 style="font-size: 1.5rem;">SAMRUDHI</h2>
         <div class="nav-links">
@@ -17,28 +19,40 @@
         </div>
     </nav>
 
-    <section style="min-height: 100vh; display: flex; align-items: center; justify-content: center; background: url('https://images.unsplash.com/photo-1584346133934-a3afd2a33c4c?q=80&w=1500&auto=format&fit=crop') center/cover; position: relative;">
-        <div style="position: absolute; inset: 0; background: rgba(15,15,15,0.85); z-index: 1;"></div>
+    <section style="min-height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; z-index: 2; padding-top: 100px;">
         
-        <div class="glass-card reveal" style="position: relative; z-index: 2; width: 100%; max-width: 600px; padding: 60px;">
-            <h2 style="font-size: 2.5rem; text-align: center; margin-bottom: 10px;">Private Concierge</h2>
-            <p style="text-align: center; color: #aaa; margin-bottom: 40px; font-size: 0.9rem;">Submit your wholesale inquiry.</p>
-            
-            <form>
-                <div class="form-group">
-                    <input type="text" class="form-input" required>
-                    <label class="form-label">Full Name / Company</label>
+        <div class="contact-wrapper reveal">
+            <div class="contact-info">
+                <h2 style="font-size: 3rem; margin-bottom: 20px;">Concierge</h2>
+                <p style="color: #aaa; margin-bottom: 50px; line-height: 1.6;">Our directors are available for bespoke curation, bulk inquiries, and private viewings.</p>
+                
+                <div style="margin-bottom: 30px;">
+                    <h4 style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; color: var(--gold);">Headquarters</h4>
+                    <p style="color: #ddd; margin-top: 5px;">Bharat Diamond Bourse<br>BKC, Mumbai, India</p>
                 </div>
-                <div class="form-group">
-                    <input type="email" class="form-input" required>
-                    <label class="form-label">Business Email</label>
+                <div>
+                    <h4 style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; color: var(--gold);">Direct Line</h4>
+                    <p style="color: #ddd; font-size: 1.2rem; margin-top: 5px;">+91 98765 43210</p>
                 </div>
-                <div class="form-group">
-                    <input type="text" class="form-input" required>
-                    <label class="form-label">Inquiry Details (e.g., Loose Stones, Bridal)</label>
-                </div>
-                <button type="submit" class="btn-magnetic" style="width: 100%; margin-top: 20px;">Request Consultation</button>
-            </form>
+            </div>
+
+            <div class="contact-form-side">
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-input" required>
+                        <label class="form-label">Company Name</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-input" required>
+                        <label class="form-label">Business Email</label>
+                    </div>
+                    <div class="form-group" style="margin-top: 50px;">
+                        <input type="text" class="form-input" required>
+                        <label class="form-label">Inquiry Details</label>
+                    </div>
+                    <button type="submit" class="btn-magnetic" style="margin-top: 30px; width: 100%;">Submit Inquiry</button>
+                </form>
+            </div>
         </div>
     </section>
 

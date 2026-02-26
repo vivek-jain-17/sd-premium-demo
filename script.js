@@ -138,4 +138,34 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
     counters.forEach(counter => counterObserver.observe(counter));
+
+    /* =========================================
+       7. FUNCTIONAL PRODUCT FILTERING
+       ========================================= */
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const productItems = document.querySelectorAll('.product-item');
+
+    if(filterBtns.length > 0) {
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Handle active state
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                // Filter logic
+                const filterValue = btn.getAttribute('data-filter');
+
+                productItems.forEach(item => {
+                    if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                        item.classList.remove('hide');
+                        // Small timeout allows the display block to render before animating opacity
+                        setTimeout(() => item.classList.add('show'), 10);
+                    } else {
+                        item.classList.remove('show');
+                        item.classList.add('hide');
+                    }
+                });
+            });
+        });
+    }
 });

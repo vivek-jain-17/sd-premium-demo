@@ -6,7 +6,10 @@
     <title>The Maison | SAMRUDHI DIAM</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="ambient-bg">
+    <div class="light-orb" style="width: 50vw; height: 50vw; top: -10%; left: -10%;"></div>
+    <div class="light-orb" style="width: 40vw; height: 40vw; bottom: -5%; right: -10%; animation-delay: -5s;"></div>
+
     <nav>
         <h2 style="font-size: 1.5rem;">SAMRUDHI</h2>
         <div class="nav-links">
@@ -17,18 +20,43 @@
         </div>
     </nav>
 
-    <header style="height: 60vh; display: flex; align-items: center; justify-content: center; background: linear-gradient(rgba(15,15,15,0.7), rgba(15,15,15,1)), url('https://images.unsplash.com/photo-1588444806660-f470557211e2?q=80&w=1500&auto=format&fit=crop') center/cover; background-attachment: fixed;">
+    <header style="height: 60vh; display: flex; align-items: center; justify-content: center; position: relative; z-index: 2;">
         <div class="reveal" style="text-align: center;">
-            <h1 style="font-size: 3.5rem; margin-bottom: 20px;">Our Heritage</h1>
-            <p style="font-size: 1.1rem; letter-spacing: 3px; text-transform: uppercase;">Forged in Earth. Perfected by Hands.</p>
+            <h1 style="font-size: 4rem; margin-bottom: 20px; text-shadow: 0 0 30px rgba(198,160,82,0.5);">Our Heritage</h1>
+            <p style="font-size: 1.2rem; letter-spacing: 4px; text-transform: uppercase; color: var(--champagne);">Forged in Earth. Perfected by Hands.</p>
         </div>
     </header>
 
-    <section style="max-width: 900px; margin: auto; text-align: center;">
-        <h2 class="reveal" style="font-size: 2.5rem; margin-bottom: 30px;">A Vision Uncompromised</h2>
-        <p class="reveal" style="line-height: 2; color: #bbb; font-size: 1.1rem; margin-bottom: 40px;">Founded on the principles of absolute purity and architectural precision, Samrudhi Diam represents the pinnacle of diamond wholesaling. Our network spans across Antwerp, Mumbai, and New York, ensuring our clients receive only the most meticulously graded stones.</p>
-        <img class="reveal" src="https://images.unsplash.com/photo-1617038220319-276d3cfab638?q=80&w=1000&auto=format&fit=crop" style="width: 100%; border-radius: 5px; box-shadow: 0 20px 50px rgba(0,0,0,0.8);" alt="Craftsmanship">
+    <section style="max-width: 1100px; margin: auto; position: relative; z-index: 2; padding-bottom: 150px;">
+        <div style="display: flex; flex-wrap: wrap; gap: 50px; align-items: center; margin-bottom: 100px;">
+            <div style="flex: 1; min-width: 300px;" class="reveal reveal-left">
+                <div class="glass-card" style="padding: 50px;">
+                    <h2 style="font-size: 2.5rem; margin-bottom: 20px;">The Genesis</h2>
+                    <p style="line-height: 1.8; color: #ccc;">Founded on principles of absolute purity, Samrudhi Diam represents the pinnacle of diamond wholesaling. We do not just source stones; we curate light. Every facet is a testament to our relentless pursuit of perfection.</p>
+                </div>
+            </div>
+            <div style="flex: 1; min-width: 300px;" class="reveal reveal-right">
+                <img src="https://images.unsplash.com/photo-1617038220319-276d3cfab638?q=80&w=800&auto=format&fit=crop" style="width: 100%; border-radius: 5px; box-shadow: 0 20px 50px rgba(0,0,0,0.8);" alt="Craftsmanship">
+            </div>
+        </div>
+
+        <div style="display: flex; flex-wrap: wrap-reverse; gap: 50px; align-items: center;">
+            <div style="flex: 1; min-width: 300px;" class="reveal reveal-left">
+                 <img src="https://images.unsplash.com/photo-1599643478524-fb66f70d00f0?q=80&w=800&auto=format&fit=crop" style="width: 100%; border-radius: 5px; box-shadow: 0 20px 50px rgba(0,0,0,0.8);" alt="Diamond Cuts">
+            </div>
+            <div style="flex: 1; min-width: 300px;" class="reveal reveal-right">
+                <div class="glass-card" style="padding: 50px;">
+                    <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Global Network</h2>
+                    <p style="line-height: 1.8; color: #ccc;">Spanning across Antwerp, Mumbai, and New York, our network ensures our boutique partners receive only the most meticulously graded stones, straight from the artisan's wheel to the display case.</p>
+                </div>
+            </div>
+        </div>
     </section>
+
+    <footer style="padding: 60px 5%; text-align: center; background: rgba(8,8,8,0.8); backdrop-filter: blur(10px); border-top: 1px solid rgba(198, 160, 82, 0.3); position: relative; z-index: 2;">
+        <h2 style="font-size: 2rem; margin-bottom: 20px;">SAMRUDHI DIAM</h2>
+        <p style="color: #666; font-size: 0.9rem;">&copy; 2026 Samrudhi Diam. All Rights Reserved.</p>
+    </footer>
 
     <script src="script.js"></script>
 </body>
