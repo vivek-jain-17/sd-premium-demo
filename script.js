@@ -169,3 +169,135 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+// Custom Cursor Logic
+const cursor = document.getElementById('custom-cursor');
+const dot = document.getElementById('cursor-dot');
+
+if (cursor && dot) {
+    window.addEventListener('mousemove', (e) => {
+        dot.style.left = `${e.clientX}px`;
+        dot.style.top = `${e.clientY}px`;
+        // Slight delay for the outer ring for a "trailing" effect
+        setTimeout(() => {
+            cursor.style.left = `${e.clientX}px`;
+            cursor.style.top = `${e.clientY}px`;
+        }, 50); 
+    });
+
+    // Expand cursor on links
+    document.querySelectorAll('a, button').forEach(link => {
+        link.addEventListener('mouseenter', () => cursor.classList.add('hover-active'));
+        link.addEventListener('mouseleave', () => cursor.classList.remove('hover-active'));
+    });
+
+    /* =========================================
+   INTERACTIVE DIAMOND DUST CANVAS
+   ========================================= */
+    const canvas = document.getElementById('diamond-dust');
+    if (canvas) {
+        const ctx = canvas.getContext('2d');
+        let particlesArray = [];
+        
+        // Set canvas to full screen
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        
+        // Track mouse position
+        let mouse = { x: null, y: null, radius: 100 };
+        window.addEventListener('mousemove', (event) => {
+            mouse.x = event.x;
+            mouse.y = event.y;
+        });
+        // Remove mouse repelling when mouse leaves window
+        window.addEventListener('mouseout', () => {
+            mouse.x = undefined;
+            mouse.y = undefined;
+        });
+
+        // Particle Object
+        class Particle {
+            constructor(x, y, size, speedY, opacity) {
+                this.x = x;
+                this.y = y;
+                this.baseX = x;
+                this.baseY = y;
+                this.size = size;
+                this.speedY = speedY;
+                this.opacity = opacity;
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                // Champagne/Gold color for the dust
+                ctx.fillStyle = `rgba(198, 160, 82, ${this.opacity})`; 
+                ctx.fill();
+            }
+            update() {
+                // Drift slowly upwards
+                this.y -= this.speedY;
+                if (this.y < 0 - this.size) {
+                    this.y = canvas.height + this.size;
+                    this.x = Math.random() * canvas.width;
+                }
+
+                // Mouse Repel Logic
+                let dx = mouse.x - this.x;
+                let dy = mouse.y - this.y;
+                let distance = Math.sqrt(dx * dx + dy * dy);
+                
+                if (mouse.x && mouse.y && distance < mouse.radius) {
+                    // Calculate push direction
+                    let forceDirectionX = dx / distance;
+                    let forceDirectionY = dy / distance;
+                    let force = (mouse.radius - distance) / mouse.radius;
+                    
+                    let directionX = forceDirectionX * force * 3;
+                    let directionY = forceDirectionY * force * 3;
+                    
+                    this.x -= directionX;
+                    this.y -= directionY;
+                } else {
+                    // Slowly return to natural vertical path
+                    if (this.x !== this.baseX) {
+                        let dx = this.x - this.baseX;
+                        this.x -= dx / 50;
+                    }
+                }
+                this.draw();
+            }
+        }
+
+        // Initialize Dust
+        function initDust() {
+            particlesArray = [];
+            let numberOfParticles = (canvas.width * canvas.height) / 8000; // Density
+            for (let i = 0; i < numberOfParticles; i++) {
+                let size = (Math.random() * 1.5) + 0.5; // Tiny particles
+                let x = Math.random() * canvas.width;
+                let y = Math.random() * canvas.height;
+                let speedY = (Math.random() * 0.5) + 0.1;
+                let opacity = (Math.random() * 0.5) + 0.1;
+                particlesArray.push(new Particle(x, y, size, speedY, opacity));
+            }
+        }
+
+        // Animation Loop
+        function animateDust() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update();
+            }
+            requestAnimationFrame(animateDust);
+        }
+
+        // Handle Window Resize
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            initDust();
+        });
+
+        initDust();
+        animateDust();
+    }
+}

@@ -17,7 +17,16 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body, html { background-color: var(--black); color: var(--champagne); font-family: var(--font-body); overflow-x: hidden; scroll-behavior: smooth; }
-
+/* Add a film grain texture to the whole site */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.04; /* Keep it VERY subtle */
+    z-index: 9999;
+    pointer-events: none; /* So it doesn't block clicks */
+}
 h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: 400; color: var(--gold); letter-spacing: 2px; }
 a { text-decoration: none; color: inherit; }
 ul { list-style: none; }
@@ -220,3 +229,41 @@ section { padding: 120px 5%; position: relative; }
 }
 .contact-info { flex: 1; min-width: 300px; padding: 60px; background: rgba(0,0,0,0.6); border-right: 1px solid rgba(255,255,255,0.05); }
 .contact-form-side { flex: 1.5; min-width: 300px; padding: 60px; }
+
+/* Hide default cursor on desktop */
+@media (min-width: 768px) {
+    body { cursor: none; }
+    a, button { cursor: none; }
+    
+    #cursor-dot {
+        position: fixed; top: 0; left: 0; width: 6px; height: 6px;
+        background: var(--gold); border-radius: 50%;
+        pointer-events: none; z-index: 10000; transform: translate(-50%, -50%);
+    }
+    #custom-cursor {
+        position: fixed; top: 0; left: 0; width: 40px; height: 40px;
+        border: 1px solid rgba(198, 160, 82, 0.5); border-radius: 50%;
+        pointer-events: none; z-index: 9999;
+        transform: translate(-50%, -50%);
+        transition: width 0.3s, height 0.3s, background 0.3s;
+    }
+    /* When hovering over links */
+    #custom-cursor.hover-active {
+        width: 60px; height: 60px;
+        background: rgba(198, 160, 82, 0.1);
+        border-color: var(--gold);
+    }
+}
+/* =========================================
+   DIAMOND DUST CANVAS BACKGROUND
+   ========================================= */
+#diamond-dust {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0; /* Behind all content */
+    pointer-events: none; /* Allows clicks to pass through to buttons/links */
+    background: transparent;
+}
