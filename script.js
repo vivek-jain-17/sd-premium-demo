@@ -190,6 +190,24 @@ if (cursor && dot) {
         link.addEventListener('mouseleave', () => cursor.classList.remove('hover-active'));
     });
 
+    // Hamburger Menu Logic
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+
+    hamburger.addEventListener('click', () => {
+        // Toggle active classes to show menu and animate hamburger to X
+        navLinks.classList.toggle('active');
+        hamburger.classList.toggle('active');
+    });
+
+    // Close menu when a link is clicked
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            hamburger.classList.remove('active');
+        });
+    });
+
     /* =========================================
    INTERACTIVE DIAMOND DUST CANVAS
    ========================================= */
