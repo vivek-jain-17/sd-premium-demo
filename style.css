@@ -177,7 +177,6 @@ section { padding: 120px 5%; position: relative; }
 /* Responsive */
 @media (max-width: 1024px) { .product-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 768px) {
-    .product-grid { grid-template-columns: 1fr; }
     .hero-content h1 { font-size: 3rem; }
     /* Show Hamburger on mobile */
     .hamburger { display: flex; }
@@ -214,6 +213,26 @@ section { padding: 120px 5%; position: relative; }
     .hamburger.active span:nth-child(3) {
         transform: translateY(-8px) rotate(-45deg);
     }
+    .page-title { 
+        font-size: 2.5rem; 
+        padding: 0 15px; 
+    }
+    
+    /* Fix Filter Buttons for mobile */
+    .filter-container {
+        flex-wrap: wrap; /* Ye buttons ko agli line me bhej dega agar jagah nahi hogi */
+        gap: 15px; /* Gap thoda kam kiya mobile ke liye */
+        padding: 15px 5%;
+    }
+    .filter-btn {
+        font-size: 0.8rem; /* Text size thoda chhota kiya */
+    }
+    
+    /* Ensure the product grid has proper spacing on sides */
+    .product-grid { 
+        padding: 0 15px; 
+    }
+
 }
 
 /* =========================================
@@ -337,4 +356,13 @@ section { padding: 120px 5%; position: relative; }
 @keyframes marqueeScroll {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); } /* Scrolls exactly half to loop smoothly */
+}
+
+
+/* Custom Page Title */
+.page-title {
+    font-size: 4rem;
+    text-shadow: 0 0 30px rgba(198,160,82,0.5);
+    text-align: center;
+    color: var(--gold);
 }
