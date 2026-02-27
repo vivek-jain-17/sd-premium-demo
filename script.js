@@ -300,4 +300,32 @@ if (cursor && dot) {
         initDust();
         animateDust();
     }
+    function navigate(pageId) {
+        const mainContent = document.querySelector('main');
+        
+        // 1. Fade out the whole main area
+        mainContent.style.transition = "opacity 0.4s ease";
+        mainContent.style.opacity = "0";
+
+        setTimeout(() => {
+            // 2. Switch the active sections while invisible
+            const sections = document.querySelectorAll('.page-section');
+            sections.forEach(section => section.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+
+            // Update nav links
+            const navLinks = document.querySelectorAll('.nav-links a');
+            navLinks.forEach(link => link.classList.remove('active'));
+            document.getElementById('nav-' + pageId).classList.add('active');
+            
+            // Scroll to top
+            window.scrollTo({ top: 0 });
+
+            // 3. Fade it back in
+            mainContent.style.opacity = "1";
+            
+            // Retrigger scroll animations for the new page
+            document.querySelectorAll('.reveal').forEach(el => el.classList.remove('active'));
+        }, 400); // Waits 400ms for the fade-out to finish
+    }
 }
